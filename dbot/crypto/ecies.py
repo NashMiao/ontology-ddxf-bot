@@ -35,26 +35,32 @@ class ECDSA:
         return private_key.to_string()
 
     @staticmethod
-    def ec_get_public_key_by_private_key(private_key_bytes: bytes):
-        if len(private_key_bytes) != 32:
+    def ec_get_public_key_by_private_key(private_key: bytes):
+        if not isinstance(private_key, bytes):
             raise BotException(BotError.invalid_private_key)
-        private_key_bytes = SigningKey.from_string(string=private_key_bytes, curve=SECP256k1)
-        public_key = private_key_bytes.get_verifying_key().to_string()
+        if len(private_key) != 32:
+            raise BotException(BotError.invalid_private_key)
+        private_key = SigningKey.from_string(string=private_key, curve=SECP256k1)
+        public_key = private_key.get_verifying_key().to_string()
         return public_key
 
     @staticmethod
-    def generate_signature(private_key_bytes: bytes, msg: bytes):
-        if len(private_key_bytes) != 32:
+    def generate_signature(private_key: bytes, msg: bytes):
+        if not isinstance(private_key, bytes):
             raise BotException(BotError.invalid_private_key)
-        private_key = SigningKey.from_string(string=private_key_bytes, curve=SECP256k1)
+        if len(private_key) != 32:
+            raise BotException(BotError.invalid_private_key)
+        private_key = SigningKey.from_string(string=private_key, curve=SECP256k1)
         signature = private_key.sign(msg)
         return signature
 
     @staticmethod
-    def verify_signature(public_key_bytes: bytes, signature: bytes, msg: bytes):
-        if len(public_key_bytes) != 64:
+    def verify_signature(public_key: bytes, signature: bytes, msg: bytes):
+        if not isinstance(public_key, bytes):
             raise BotException(BotError.invalid_public_key)
-        public_key = VerifyingKey.from_string(string=public_key_bytes, curve=SECP256k1)
+        if len(public_key) != 64:
+            raise BotException(BotError.invalid_public_key)
+        public_key = VerifyingKey.from_string(string=public_key, curve=SECP256k1)
         try:
             result = public_key.verify(signature, msg)
         except BadSignatureError:
@@ -65,6 +71,8 @@ class ECDSA:
 class ECIES:
     @staticmethod
     def encrypt_with_cbc_mode(plain_text: bytes, public_key: bytes) -> (bytes, bytes, bytes):
+        if not isinstance(public_key, bytes):
+            raise BotException(BotError.invalid_public_key)
         if len(public_key) != 64:
             raise BotException(BotError.invalid_public_key)
         r = randint(1, SECP256k1.order)
@@ -81,6 +89,10 @@ class ECIES:
 
     @staticmethod
     def decrypt_with_cbc_mode(cipher_text: bytes, private_key: bytes, iv: bytes, encode_g_tilde: bytes):
+        if not isinstance(private_key, bytes):
+            raise BotException(BotError.invalid_private_key)
+        if len(private_key) != 32:
+            raise BotException(BotError.invalid_private_key)
         str_g_tilde_x = encode_g_tilde[1:33]
         str_g_tilde_y = encode_g_tilde[33:65]
         g_tilde_x = string_to_number(str_g_tilde_x)
@@ -91,3 +103,7 @@ class ECIES:
         aes_key = pbkdf2(seed, 32)
         plain_text = AESHandler.aes_cbc_decrypt(cipher_text, iv, aes_key)
         return plain_text
+
+    @staticmethod
+    def encrypt_with_gcm_mode():
+        pass

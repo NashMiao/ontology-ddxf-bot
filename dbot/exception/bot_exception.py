@@ -24,3 +24,6 @@ class BotError:
             except UnicodeDecodeError:
                 msg = 'Other Error'
         return BotError.get_error(60000, msg)
+
+    invalid_private_key = get_error.__func__(10000, 'the length of private key should be 32 bytes.')
+    invalid_public_key = get_error.__func__(10001, 'the length of public key should be 64 bytes.')
