@@ -8,7 +8,7 @@ from Cryptodome.Util.Padding import pad, unpad
 
 class AESHandler(object):
     @staticmethod
-    def __generate_iv():
+    def generate_iv():
         return Random.new().read(AES.block_size)
 
     @staticmethod
@@ -70,7 +70,7 @@ class AESHandler(object):
 
     @staticmethod
     def aes_cbc_encrypt(plain_text: bytes, key: bytes):
-        iv = AESHandler.__generate_iv()
+        iv = AESHandler.generate_iv()
         cipher = AES.new(key=key, mode=AES.MODE_CBC, iv=iv)
         return cipher.IV, cipher.encrypt(pad(plain_text, AES.block_size))
 

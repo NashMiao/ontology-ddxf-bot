@@ -12,7 +12,7 @@ from dbot.utils.handle_data import (
 )
 
 
-def pbkdf2(seed: str, dk_len: int) -> bytes:
+def pbkdf2(seed: str or bytes, dk_len: int) -> bytes:
     """
     Derive one key from a seed.
 
