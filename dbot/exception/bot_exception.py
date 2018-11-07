@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-class BotException:
+class BotException(Exception):
     def __init__(self, error: dict):
         super().__init__(error['code'], error['msg'])
 
