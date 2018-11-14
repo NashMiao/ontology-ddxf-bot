@@ -246,3 +246,4 @@ In freezing period, data requester can applies for arbitration to handle conflic
 ### 6.2. The Process of Atomic Swap
 
 DDXF Atomic swaps is an data trading module, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
+
