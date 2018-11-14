@@ -52,7 +52,7 @@ class EciesTest(unittest.TestCase):
         decrypt_msg = ECIES.decrypt_with_cbc_mode(cipher_text, private_key_bytes, aes_iv, encode_g_tilde)
         self.assertEqual(msg, decrypt_msg)
 
-    def test_decrypt_with_cbc_mode(self):
+    def test_encrypt_with_gcm_mode(self):
         private_key_bytes = ECDSA.generate_private_key()
         self.assertEqual(32, len(private_key_bytes))
         public_key_bytes = ECDSA.ec_get_public_key_by_private_key(private_key_bytes)
