@@ -4,32 +4,32 @@ English | [中文](README_CN.md)
 
 <!-- TOC -->
 
-- [Encryption Service Based on ONT ID](#encryption-service-based-on-ont-id)
-    - [Encryption Process](#encryption-process)
-    - [Decryption Process](#decryption-process)
-- [1. Elliptic Curve Integrated Encryption Scheme (ECIES)](#1-elliptic-curve-integrated-encryption-scheme-ecies)
-    - [Password-Based Key Derivation Function (PBKDF)](#password-based-key-derivation-function-pbkdf)
-- [2. Ontology Distributed Identity Framework (ONT ID)](#2-ontology-distributed-identity-framework-ont-id)
-- [3. InterPlanetary File System (IPFS)](#3-interplanetary-file-system-ipfs)
-    - [3.1. How IPFS Works](#31-how-ipfs-works)
-    - [3.2. IPFS HTTP API](#32-ipfs-http-api)
-    - [3.3. Initialize your IPFS Repository](#33-initialize-your-ipfs-repository)
-    - [3.4. Create your Private IPFS Network (optional)](#34-create-your-private-ipfs-network-optional)
-    - [3.5. Run your IPFS Node](#35-run-your-ipfs-node)
-    - [3.6. Client Library for IPFS API](#36-client-library-for-ipfs-api)
-- [4. DataToken](#4-datatoken)
-- [5. Bancor Protocol](#5-bancor-protocol)
-    - [5.1. Introduction](#51-introduction)
-    - [5.2. A New Method for Price Discovery](#52-a-new-method-for-price-discovery)
-- [6. Atomic Swap](#6-atomic-swap)
+- [1. Encryption Service Based on ONT ID](#1-encryption-service-based-on-ont-id)
+    - [1.1. Encryption Process](#11-encryption-process)
+    - [1.2. Decryption Process](#12-decryption-process)
+- [2.1. Password-Based Key Derivation Function (PBKDF)](#21-password-based-key-derivation-function-pbkdf)
+- [2. Elliptic Curve Integrated Encryption Scheme (ECIES)](#2-elliptic-curve-integrated-encryption-scheme-ecies)
+- [3. Ontology Distributed Identity Framework (ONT ID)](#3-ontology-distributed-identity-framework-ont-id)
+- [4. InterPlanetary File System (IPFS)](#4-interplanetary-file-system-ipfs)
+    - [4.1. How IPFS Works](#41-how-ipfs-works)
+    - [4.2. IPFS HTTP API](#42-ipfs-http-api)
+    - [4.3. Initialize your IPFS Repository](#43-initialize-your-ipfs-repository)
+    - [4.4. Create your Private IPFS Network (optional)](#44-create-your-private-ipfs-network-optional)
+    - [4.5. Run your IPFS Node](#45-run-your-ipfs-node)
+    - [4.6. Client Library for IPFS API](#46-client-library-for-ipfs-api)
+- [5. DataToken](#5-datatoken)
+- [6. Bancor Protocol](#6-bancor-protocol)
     - [6.1. Introduction](#61-introduction)
-    - [6.2. The Process of Atomic Swap](#62-the-process-of-atomic-swap)
+    - [6.2. A New Method for Price Discovery](#62-a-new-method-for-price-discovery)
+- [7. Atomic Swap](#7-atomic-swap)
+    - [7.1. Introduction](#71-introduction)
+    - [7.2. The Process of Atomic Swap](#72-the-process-of-atomic-swap)
 
 <!-- /TOC -->
 
-## Encryption Service Based on ONT ID
+## 1. Encryption Service Based on ONT ID
 
-### Encryption Process
+### 1.1. Encryption Process
 
 There are three main steps to encrypting data:
 
@@ -39,21 +39,38 @@ There are three main steps to encrypting data:
 
 <div align=center><img width="500" src="img/endToEnd.png"/></div>
 
-### Decryption Process
+### 1.2. Decryption Process
 
 - Query private key: Find the corresponding private key `sk` from the private key management module according to `ONT ID` and `PKIndex`.
 - Decrypt symmetric key: Use the private key `sk` to decrypt the encrypted key `ekey` to get the AES symmetric key `key`.
 - Decrypt data: Use the AES symmetric key `key` to decrypt the ciphertext data `c` to get the plaintext data `m`.
 
-## 1. Elliptic Curve Integrated Encryption Scheme (ECIES)
-
-Elliptic Curve Integrated Encryption Scheme(also ECIES), is a hybrid encryption system proposed by Victor Shoup in 2001. Shoup's submission can be found at [here](https://www.shoup.net/papers/iso-2_1.pdf).
-
-### Password-Based Key Derivation Function (PBKDF)
+## 2.1. Password-Based Key Derivation Function (PBKDF)
 
 In cryptography, PBKDF (Password-Based Key Derivation Function) is key derivation functions with a sliding computational cost, aimed to reduce the vulnerability of encrypted keys to brute force attacks.
 
-## 2. Ontology Distributed Identity Framework (ONT ID)
+In Distributed Data eXchange Framework(short for DDXF), the hash function used by the key derivation algorithm is `SHA256`, and algorithm is as follows:
+
+- Input: `seed`, derived key length `dkLen` (in bits).
+- Output: Derived key `key` of length `dklen`.
+
+```python
+def pbkdf2(seed: str or bytes, dk_len: int) -> bytes:
+    key = b''
+    index = 1
+    bytes_seed = str_to_bytes(seed)
+    while len(key) < dk_len:
+        key += sha256(b''.join([bytes_seed, int_to_little_bytes(index)]))
+        index += 1
+    return key[:dk_len]
+```
+
+## 2. Elliptic Curve Integrated Encryption Scheme (ECIES)
+
+Elliptic Curve Integrated Encryption Scheme(also ECIES), is a hybrid encryption system proposed by Victor Shoup in 2001. Shoup's submission can be found at [here](https://www.shoup.net/papers/iso-2_1.pdf).
+
+
+## 3. Ontology Distributed Identity Framework (ONT ID)
 
 Ontology DID (also called ONT ID) is a decentralized identity identification protocol based on W3C DID specifications. ONT ID establishes a cryptographically-based digital identity for each entity, allowing self-sovereign of data authorization and ownership confirmation, which makes the identity and data truly assets that the user can control.
 
@@ -61,13 +78,13 @@ If you are interested in ONT ID, you can find a detailed introduction [here](htt
 
 <div align=center><img height="400" src="img/ontid.jpg"/></div>
 
-## 3. InterPlanetary File System (IPFS)
+## 4. InterPlanetary File System (IPFS)
 
 InterPlanetary File System (IPFS) is a protocol and network designed to create a content-addressable, peer-to-peer method of storing and sharing hypermedia in a distributed file system.
 
 <div align=center><img height="400" src="img/ipfs.jpeg"/></div>
 
-### 3.1. How IPFS Works
+### 4.1. How IPFS Works
 
 You may be interested about how IPFS works. In fact, when we add files to IPFS:
 
@@ -77,7 +94,7 @@ You may be interested about how IPFS works. In fact, when we add files to IPFS:
 - When looking up files, you're asking the network to find nodes storing the content behind a unique hash.
 - Every file can be found by human-readable names using a decentralized naming system called IPNS.
 
-### 3.2. IPFS HTTP API
+### 4.2. IPFS HTTP API
 
 When an IPFS node is running as a daemon, it exposes an HTTP API that allows you to control the node and run the same commands you can from the command line.
 
@@ -87,7 +104,7 @@ This API is intended to be the same across different IPFS implementations. Howev
 
 <div align=center><img height="400" src="img/ipfsHttp.png"/></div>
 
-### 3.3. Initialize your IPFS Repository
+### 4.3. Initialize your IPFS Repository
 
 IPFS stores all its settings and internal data in a directory called the repository. Before using IPFS for the first time, you’ll need to initialize the repository with the ipfs init command:
 
@@ -103,7 +120,7 @@ to get started, enter:
 
 The hash after `peer identity` is your node’s ID and will be different from the one shown in the above output. Other nodes on the network use it to find and connect to you. You can run ipfs id at any time to get it again if you need it.
 
-### 3.4. Create your Private IPFS Network (optional)
+### 4.4. Create your Private IPFS Network (optional)
 
 The IPFS bootstrap list is a list of peers with which the IPFS daemon learns about other peers on the network. IPFS comes with a default list of trusted peers, but you are free to modify the list to suit your needs. One popular use for a custom bootstrap list is to create a personal IPFS network. You can get you IPFS bootstrap list by `bootstrap` command.
 
@@ -182,7 +199,7 @@ PS C:\Users> ipfs bootstrap add /ip4/192.168.181.141/tcp/4001/ipfs/QmYzdL2Pe3Jvo
 added /ip4/192.168.181.141/tcp/4001/ipfs/QmYzdL2Pe3JvoqMZ1qvcVMnAWo4fVqyvw2S8XDnxHLK8MV
 ```
 
-### 3.5. Run your IPFS Node
+### 4.5. Run your IPFS Node
 
 Before we use IPFS HTTP API, we need to run our IPFS node as a daemon.
 
@@ -221,21 +238,21 @@ Gateway (readonly) server listening on /ip4/127.0.0.1/tcp/8080
 Daemon is ready
 ```
 
-### 3.6. Client Library for IPFS API
+### 4.6. Client Library for IPFS API
 
 - [Go](https://github.com/ipfs/go-ipfs-api)
 - [Python](https://github.com/ipfs/py-ipfs-api)
 - [JavaScript](https://github.com/ipfs/js-ipfs)
 
-## 4. DataToken
+## 5. DataToken
 
 DToken (short for DataToken),which is the mapping of any asset or data in the reality to the digital assets of Ontology blockchain.For data or offchain assets to be traded, it is necessary to define Data eXchange smart contracts according to ontology contract asset specification, so as to facilitate chain transactions.
 
 The DataToken includes metadata MetaData, MetaData is a description of the data structure and constraints of the capitalized data.
 
-## 5. Bancor Protocol
+## 6. Bancor Protocol
 
-### 5.1. Introduction
+### 6.1. Introduction
 
 Tokens, which are essentially networks of value , do not connect to each other in the same way that information networks do. While the switches on Internet exchange points (IXs) interlink information networks, active traders on exchanges are effectively interlinking tokens.
 
@@ -245,7 +262,7 @@ In Distributed Data eXchange Framework(short for DDXF), the Bancor protocol enab
 
 The Bancor protocol is named in honor of the Keynesian proposal to introduce a supranational reserve currency called Bancor to systematize international currency conversion after WWII.
 
-### 5.2. A New Method for Price Discovery
+### 6.2. A New Method for Price Discovery
 
 A DToken utilizes a novel method for price-discovery which is based on a “Constant Reserve Ratio” (CRR). The CRR is set by the DToken creator, for ONT or ONG, and used in price calculation, along with the DToken’s current supply and reserve balance, in the following way:
 
@@ -253,9 +270,9 @@ A DToken utilizes a novel method for price-discovery which is based on a “Cons
 
 This calculation ensures that a constant ratio is kept between the ONT  or ONG balance and the DToken’s market cap, which is its supply times its price. When DToken are purchased (in any of their reserve currencies) the payment for the purchase is added to the reserve balance, and based on the calculated price, new DTokens are issued to the buyer. Due to the calculation above, a purchase of a DToken with a less than 100% CRR will cause its price to increase, since both the reserve balance and the supply are increasing, while the latter is multiplied by a fraction.
 
-## 6. Atomic Swap
+## 7. Atomic Swap
 
-### 6.1. Introduction
+### 7.1. Introduction
 
 Atomic swap is a smart contract technology that enables exchange of one cryptocurrency for another without using centralized intermediaries, such as exchanges.
 
@@ -269,7 +286,7 @@ In freezing period, data requester can applies for arbitration to handle conflic
 
 <div align=center><img height="120" src="img/atomicSwaps.png"/></div>
 
-### 6.2. The Process of Atomic Swap
+### 7.2. The Process of Atomic Swap
 
 DDXF Atomic swaps is an data trading module, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
 

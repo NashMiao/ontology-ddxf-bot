@@ -49,6 +49,22 @@
 
 在密码学中，基于口令的密钥派生函数 (PBKDF) 是一类具有滑动计算成本的密钥派生函数，旨在减少加密密钥在面对暴力攻击时的脆弱性。
 
+在去中心化数据交易框架中，密钥派生算法使用的哈希函数是 `SHA256`，算法如下：
+
+- 输入：`seed`、派生密钥长度 `dkLen`(以bit作为计量单位)。
+- 输出：长度为 `dklen` 的派生密钥 `key`。
+
+```python
+def pbkdf2(seed: str or bytes, dk_len: int) -> bytes:
+    key = b''
+    index = 1
+    bytes_seed = str_to_bytes(seed)
+    while len(key) < dk_len:
+        key += sha256(b''.join([bytes_seed, int_to_little_bytes(index)]))
+        index += 1
+    return key[:dk_len]
+```
+
 ## 3. 基于椭圆曲线的整合加密方案（ECIES）
 
 基于椭圆曲线的整合加密方案是一种由 Victor Shoup 在2001年提出的混合加密体系。Shoup 的提案可以在[这里](https://www.shoup.net/papers/iso-2_1.pdf)找到。
