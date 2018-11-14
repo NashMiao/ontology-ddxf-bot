@@ -241,6 +241,8 @@ In Distributed Data eXchange Framework(short for DDXF), atomic swap is used to e
 
 In freezing period, data requester can applies for arbitration to handle conflict, and the interceder is select at the beginning of data exchange.
 
+![atomicSwaps](img/atomicSwaps.png)
+
 ### 6.2. The Process of Atomic Swap
 
 DDXF Atomic swaps is an data trading module, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
