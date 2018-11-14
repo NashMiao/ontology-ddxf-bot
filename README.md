@@ -5,7 +5,7 @@ English | [中文](README_CN.md)
 <!-- TOC -->
 
 - [1. Elliptic Curve Integrated Encryption Scheme (ECIES)](#1-elliptic-curve-integrated-encryption-scheme-ecies)
-- [2. Ontology Distributed Identity Framework (ONTID)](#2-ontology-distributed-identity-framework-ontid)
+- [2. Ontology Distributed Identity Framework (ONT ID)](#2-ontology-distributed-identity-framework-ont-id)
 - [3. InterPlanetary File System (IPFS)](#3-interplanetary-file-system-ipfs)
     - [3.1. How IPFS Works](#31-how-ipfs-works)
     - [3.2. IPFS HTTP API](#32-ipfs-http-api)
@@ -25,13 +25,13 @@ English | [中文](README_CN.md)
 
 Elliptic Curve Integrated Encryption Scheme(also ECIES), is a hybrid encryption system proposed by Victor Shoup in 2001. Shoup's submission can be found at [here](https://www.shoup.net/papers/iso-2_1.pdf).
 
-## 2. Ontology Distributed Identity Framework (ONTID)
+## 2. Ontology Distributed Identity Framework (ONT ID)
 
 Ontology DID (also called ONT ID) is a decentralized identity identification protocol based on W3C DID specifications. ONT ID establishes a cryptographically-based digital identity for each entity, allowing self-sovereign of data authorization and ownership confirmation, which makes the identity and data truly assets that the user can control.
 
-<div align=center><img height="400" src="img/ontid.jpg"/></div>
+If you are interested in ONT ID, you can find a detailed introduction [here](https://ontio.github.io/documentation/ontology_DID_en.html).
 
-If you are interested in ONTID, you can find a detailed introduction [here](https://ontio.github.io/documentation/ontology_DID_en.html).
+<div align=center><img height="400" src="img/ontid.jpg"/></div>
 
 ## 3. InterPlanetary File System (IPFS)
 
