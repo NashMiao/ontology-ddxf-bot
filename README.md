@@ -37,6 +37,8 @@ If you are interested in ONT ID, you can find a detailed introduction [here](htt
 
 InterPlanetary File System (IPFS) is a protocol and network designed to create a content-addressable, peer-to-peer method of storing and sharing hypermedia in a distributed file system.
 
+<div align=center><img height="400" src="img/ipfs.jpg"/></div>
+
 ### 3.1. How IPFS Works
 
 You may be interested about how IPFS works. In fact, when we add files to IPFS:
