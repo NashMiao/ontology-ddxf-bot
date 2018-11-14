@@ -4,7 +4,11 @@ English | [中文](README_CN.md)
 
 <!-- TOC -->
 
+- [Encryption Service Based on ONT ID](#encryption-service-based-on-ont-id)
+    - [Encryption Process](#encryption-process)
+    - [Decryption Process](#decryption-process)
 - [1. Elliptic Curve Integrated Encryption Scheme (ECIES)](#1-elliptic-curve-integrated-encryption-scheme-ecies)
+    - [Password-Based Key Derivation Function (PBKDF)](#password-based-key-derivation-function-pbkdf)
 - [2. Ontology Distributed Identity Framework (ONT ID)](#2-ontology-distributed-identity-framework-ont-id)
 - [3. InterPlanetary File System (IPFS)](#3-interplanetary-file-system-ipfs)
     - [3.1. How IPFS Works](#31-how-ipfs-works)
@@ -23,9 +27,31 @@ English | [中文](README_CN.md)
 
 <!-- /TOC -->
 
+## Encryption Service Based on ONT ID
+
+### Encryption Process
+
+There are three main steps to encrypting data:
+
+- Query public key: Access the smart contract in the ontology blockchain and get the corresponding public key `pk` based on the data requester's `ONT ID`.
+- Random sampling: Randomly sample 256-bit data to obtain the Advanced Encryption Standard (AES) key `key`.
+- Encryption: The AES256 key is encrypted using the Public Key Encryption Algorithm (PKE) to get `ekey`, and the plaintext data `m` is encrypted using AES256-GCM to get the ciphertext data `c`.
+
+<div align=center><img height="600" src="img/endToEnd.png"/></div>
+
+### Decryption Process
+
+- Query private key: Find the corresponding private key `sk` from the private key management module according to `ONT ID` and `PKIndex`.
+- Decrypt symmetric key: Use the private key `sk` to decrypt the encrypted key `ekey` to get the AES symmetric key `key`.
+- Decrypt data: Use the AES symmetric key `key` to decrypt the ciphertext data `c` to get the plaintext data `m`.
+
 ## 1. Elliptic Curve Integrated Encryption Scheme (ECIES)
 
 Elliptic Curve Integrated Encryption Scheme(also ECIES), is a hybrid encryption system proposed by Victor Shoup in 2001. Shoup's submission can be found at [here](https://www.shoup.net/papers/iso-2_1.pdf).
+
+### Password-Based Key Derivation Function (PBKDF)
+
+In cryptography, PBKDF (Password-Based Key Derivation Function) is key derivation functions with a sliding computational cost, aimed to reduce the vulnerability of encrypted keys to brute force attacks.
 
 ## 2. Ontology Distributed Identity Framework (ONT ID)
 
@@ -237,7 +263,7 @@ Atomic swaps can take place directly between blockchains of different cryptocurr
 
 Since then, other startups and decentralized exchanges have allowed users the same facility. For example, Lightning Labs, a startup that uses bitcoin’s lightning network for transactions, has conducted off-chain swaps using the technology.
 
-In Distributed Data eXchange Framework(short for DDXF), atomic swap is used to ensuer the data provide can withdrawal DToken from swap contract if and only if data requester get the encrypted IPFS address.
+In Distributed Data eXchange Framework(short for DDXF), atomic swap is used to ensuer the data provider can withdrawal DToken from swap contract if and only if data requester get the encrypted IPFS address.
 
 In freezing period, data requester can applies for arbitration to handle conflict, and the interceder is select at the beginning of data exchange.
 
@@ -247,3 +273,12 @@ In freezing period, data requester can applies for arbitration to handle conflic
 
 DDXF Atomic swaps is an data trading module, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
 
+data requester:
+
+- generate rand number `a`
+
+<div align=center>a &larr; RNG(seed)</div>
+
+- hc &larr; sha256(a)
+  
+- data provider
