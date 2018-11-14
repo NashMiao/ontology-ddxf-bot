@@ -14,6 +14,7 @@ English | [中文](README_CN.md)
     - [3.5. Run your IPFS Node](#35-run-your-ipfs-node)
 - [4. Bancor Protocol](#4-bancor-protocol)
     - [4.1. Introduction](#41-introduction)
+    - [4.2. A New Method for Price Discovery](#42-a-new-method-for-price-discovery)
 - [5. Atomic Swaps](#5-atomic-swaps)
     - [5.1. Introduction](#51-introduction)
     - [5.2. Encrypted IPFS Address <> DToken](#52-encrypted-ipfs-address--dtoken)
@@ -190,13 +191,24 @@ Daemon is ready
 
 ### 4.1. Introduction
 
-<div align=center>
-<a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a>
-</div>
+Currencies, which are essentially networks of value , do not connect to each other in the same way that information networks do. While the switches on Internet exchange points (IXs) interlink information networks, active traders on exchanges are effectively interlinking currencies.
+
+The current exchange model for currencies/assets has a critical barrier, requiring a certain volume of trading activity to achieve market-liquidity. This inherent barrier makes it nearly impossible for small-scale currencies (such as community currencies, loyalty points or other custom tokens) to be linked (exchangeable) to other popular currencies using a market-determined exchange rate.
+
+The Bancor protocol enables built-in price discovery and a liquidity mechanism for tokens on smart contract blockchains. These “smart tokens” hold one or more other tokens in reserve, and enable any party to instantly purchase or liquidate the smart token in exchange for one of its reserve tokens, directly through the smart token’s contract, at a continuously calculated price, according to a formula which balances buy and sell volumes.
+
+The Bancor protocol is named in honor of the Keynesian proposal to introduce a supranational reserve currency called Bancor to systematize international currency conversion after WWII.
+
+### 4.2. A New Method for Price Discovery
+
+The CRR is set by the smart token creator, for each ONG, and used in price calculation, along with the Data Token’s (short for DToken) current supply and reserve balance, in the following way:
+
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a></div>
+
+This calculation ensures that a constant ratio is kept between the ONG balance and the DToken’s market cap, which is its supply times its price. When DToken are purchased (in any of their reserve currencies) the payment for the purchase is added to the reserve balance, and based on the calculated price, new smart tokens
+are issued to the buyer. Due to the calculation above, a purchase of a smart token with a less than 100% CRR will cause its price to increase, since both the reserve balance and the supply are increasing, while the latter is multiplied by a fraction.
 
 ## 5. Atomic Swaps
-
-
 
 ### 5.1. Introduction
 
