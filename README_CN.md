@@ -13,6 +13,12 @@
     - [3.4. 创建你的私有星际文件系统网络（可选）](#34-创建你的私有星际文件系统网络可选)
     - [3.5. 运行你的星际文件系统节点](#35-运行你的星际文件系统节点)
     - [3.6. 星际文件系统客户端 API 库](#36-星际文件系统客户端-api-库)
+- [4. 数据通证](#4-数据通证)
+- [5. Bancor 协议](#5-bancor-协议)
+    - [5.1. 简介](#51-简介)
+    - [5.2. 一种价格发现的新方法](#52-一种价格发现的新方法)
+- [6. 原子交换](#6-原子交换)
+    - [6.1. 简介](#61-简介)
 
 <!-- /TOC -->
 
@@ -187,3 +193,34 @@ Daemon is ready
 - [Go](https://github.com/ipfs/go-ipfs-api)
 - [Python](https://github.com/ipfs/py-ipfs-api)
 - [JavaScript](https://github.com/ipfs/js-ipfs)
+
+## 4. 数据通证
+
+数据通证（DataToken，DToken），是将现实中的任何资产或者数据映射到本体区块链的合约内数字资产。对于所要交易的数据或链外资产，需要按照本体合约资产接口规范，定义好智能合约，在链上注册，以便于链上交易。
+
+DataToken中包括元数据MetaData，MetaData是对于资产化数据的数据结构和约束的描述。
+
+## 5. Bancor 协议
+
+### 5.1. 简介
+
+通证在价值互联网中至关重要，但却还没有像信息互联网那样建立顺畅的联系。当互联网的交换节点将信息互联网连接起来的时候，价值互联网中“交换机”的角色实际上由各大交易所中活跃的交易者们所扮演着。
+
+当前的通证交换模式有一个扬中的障碍，即需要一定的交易量来实现市场的流动性。这使得小规模通证，如社区通证、商家积分以及各种自定义通证，难以通过市场发现合理的兑换率并与主流的通证进行交换。
+
+在去中心化数据交易应用框架（简记为DDXF）中，Bancor 协议使得基于智能合约发行的通证的价格发现和流通机制成为了可能。这些合约通证（DToken）持有 ONT 或 ONG 作为准备金。那些被持有的 ONT 和 ONG，我们统称为保证金通证。持有 DToken 的人可以通过智能合约以一个数学公式计算出的实时价格用保证金通证即时买入或卖出 DToken。
+
+Bancor 协议的命名是为了超主权货币的凯恩斯计划致敬，该计划引入了一种名为 Bancor 的超主权准备金货币以推动形成二战后的国际货币兑付体系。
+
+### 5.2. 一种价格发现的新方法
+
+DToken 利用了一种基础恒定准备金率（简记为CRR）的价格发现机制。CRR由 DToken 的发行方基于 ONT 或 ONG 设定。DToken 价格通过CRR、DToken的当前供应量以及 ONT 或 ONG 的当前余额计算得出。公式如下：
+
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a></div>
+
+这一价格计算方式确保了在 ONT 或 ONG 的当前余额和 DToken 的市值之间能够保持恒定的比率，即 当前供应量乘以价格。当购买DToken（以任何其储备货币）时，购买的付款将被添加到储备金余额中，并根据计算新的价格，新的 DToken 将发放买方。基于该价格公式，购买 CRR 低于100％的 DToken 都将导致其价格上涨，虽然储备余额和供应量都在增加，但供应量被乘上了一个因子。
+
+## 6. 原子交换
+
+### 6.1. 简介
+

@@ -13,12 +13,13 @@ English | [中文](README_CN.md)
     - [3.4. Create your Private IPFS Network (optional)](#34-create-your-private-ipfs-network-optional)
     - [3.5. Run your IPFS Node](#35-run-your-ipfs-node)
     - [3.6. Client Library for IPFS API](#36-client-library-for-ipfs-api)
-- [4. Bancor Protocol](#4-bancor-protocol)
-    - [4.1. Introduction](#41-introduction)
-    - [4.2. A New Method for Price Discovery](#42-a-new-method-for-price-discovery)
-- [5. Atomic Swaps](#5-atomic-swaps)
+- [4. DataToken](#4-datatoken)
+- [5. Bancor Protocol](#5-bancor-protocol)
     - [5.1. Introduction](#51-introduction)
-    - [5.2. Atomic Swaps between Encrypted IPFS Address and DToken](#52-atomic-swaps-between-encrypted-ipfs-address-and-dtoken)
+    - [5.2. A New Method for Price Discovery](#52-a-new-method-for-price-discovery)
+- [6. Atomic Swaps](#6-atomic-swaps)
+    - [6.1. Introduction](#61-introduction)
+    - [6.2. Atomic Swaps between Encrypted IPFS Address and DToken](#62-atomic-swaps-between-encrypted-ipfs-address-and-dtoken)
 
 <!-- /TOC -->
 
@@ -200,30 +201,35 @@ Daemon is ready
 - [Python](https://github.com/ipfs/py-ipfs-api)
 - [JavaScript](https://github.com/ipfs/js-ipfs)
 
-## 4. Bancor Protocol
+## 4. DataToken
 
-### 4.1. Introduction
+DToken (short for DataToken),which is the mapping of any asset or data in the reality to the digital assets of Ontology blockchain.For data or offchain assets to be traded, it is necessary to define Data eXchange smart contracts according to ontology contract asset specification, so as to facilitate chain transactions.
 
-Currencies, which are essentially networks of value , do not connect to each other in the same way that information networks do. While the switches on Internet exchange points (IXs) interlink information networks, active traders on exchanges are effectively interlinking currencies.
+The DataToken includes metadata MetaData, MetaData is a description of the data structure and constraints of the capitalized data.
 
-The current exchange model for currencies/assets has a critical barrier, requiring a certain volume of trading activity to achieve market-liquidity. This inherent barrier makes it nearly impossible for small-scale currencies (such as community currencies, loyalty points or other custom tokens) to be linked (exchangeable) to other popular currencies using a market-determined exchange rate.
+## 5. Bancor Protocol
 
-The Bancor protocol enables built-in price discovery and a liquidity mechanism for tokens on smart contract blockchains. These “smart tokens” hold one or more other tokens in reserve, and enable any party to instantly purchase or liquidate the smart token in exchange for one of its reserve tokens, directly through the smart token’s contract, at a continuously calculated price, according to a formula which balances buy and sell volumes.
+### 5.1. Introduction
+
+Tokens, which are essentially networks of value , do not connect to each other in the same way that information networks do. While the switches on Internet exchange points (IXs) interlink information networks, active traders on exchanges are effectively interlinking tokens.
+
+The current exchange model for tokens/assets has a critical barrier, requiring a certain volume of trading activity to achieve market-liquidity. This inherent barrier makes it nearly impossible for small-scale tokens (such as community tokens, loyalty points or other custom tokens) to be linked (exchangeable) to other popular tokens using a market-determined exchange rate.
+
+In Distributed Data eXchange Framework(short for DDXF), the Bancor protocol enables built-in price discovery and a liquidity mechanism for tokens on smart contract blockchains. These DToken hold ONT or ONG in reserve, and enable any party to instantly purchase or liquidate the DToken in exchange for one of its reserve tokens, directly through the smart token’s contract, at a continuously calculated price, according to a formula which balances buy and sell volumes.
 
 The Bancor protocol is named in honor of the Keynesian proposal to introduce a supranational reserve currency called Bancor to systematize international currency conversion after WWII.
 
-### 4.2. A New Method for Price Discovery
+### 5.2. A New Method for Price Discovery
 
-The CRR is set by the smart token creator, for each ONG, and used in price calculation, along with the Data Token’s (short for DToken) current supply and reserve balance, in the following way:
+A DToken utilizes a novel method for price-discovery which is based on a “Constant Reserve Ratio” (CRR). The CRR is set by the DToken creator, for ONT or ONG, and used in price calculation, along with the DToken’s current supply and reserve balance, in the following way:
 
 <div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a></div>
 
-This calculation ensures that a constant ratio is kept between the ONG balance and the DToken’s market cap, which is its supply times its price. When DToken are purchased (in any of their reserve currencies) the payment for the purchase is added to the reserve balance, and based on the calculated price, new smart tokens
-are issued to the buyer. Due to the calculation above, a purchase of a smart token with a less than 100% CRR will cause its price to increase, since both the reserve balance and the supply are increasing, while the latter is multiplied by a fraction.
+This calculation ensures that a constant ratio is kept between the ONT  or ONG balance and the DToken’s market cap, which is its supply times its price. When DToken are purchased (in any of their reserve currencies) the payment for the purchase is added to the reserve balance, and based on the calculated price, new DTokens are issued to the buyer. Due to the calculation above, a purchase of a DToken with a less than 100% CRR will cause its price to increase, since both the reserve balance and the supply are increasing, while the latter is multiplied by a fraction.
 
-## 5. Atomic Swaps
+## 6. Atomic Swaps
 
-### 5.1. Introduction
+### 6.1. Introduction
 
 Atomic swap is a smart contract technology that enables exchange of one cryptocurrency for another without using centralized intermediaries, such as exchanges.
 
@@ -231,5 +237,6 @@ Atomic swaps can take place directly between blockchains of different cryptocurr
 
 Since then, other startups and decentralized exchanges have allowed users the same facility. For example, Lightning Labs, a startup that uses bitcoin’s lightning network for transactions, has conducted off-chain swaps using the technology.
 
-### 5.2. Atomic Swaps between Encrypted IPFS Address and DToken
+### 6.2. Atomic Swaps between Encrypted IPFS Address and DToken
 
+Atomic swaps is an data trading module for Ontology DDXF, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
