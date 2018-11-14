@@ -215,11 +215,11 @@ Bancor 协议的命名是为了超主权货币的凯恩斯计划致敬，该计�
 
 ### 5.2. 一种价格发现的新方法
 
-DToken 利用了一种基于恒定准备金率（简记为CRR）的价格发现机制。CRR由 DToken 的发行方设定（基于 ONT 或 ONG）。DToken 的价格通过CRR、当前 DToken 的供应量以及 储备金余额的当前余额（ONT 或 ONG）计算得出。公式如下：
+DToken 利用了一种基于恒定准备金率（简记为CRR）的价格发现机制。CRR由 DToken 的发行方设定（基于 ONT 或 ONG）。DToken 的价格通过CRR、当前 DToken 的供应量以及准备金的当前余额（ONT 或 ONG）计算得出。公式如下：
 
 <div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a></div>
 
-这一价格计算方式确保了在 ONT 或 ONG 的当前余额和 DToken 的市值之间能够保持恒定的比率，即当前供应量乘以价格。当购买DToken（以任何其储备货币）时，购买的付款将被添加到储备金余额中，并根据计算新的价格，新的 DToken 将发放到买方账户。基于该价格公式，购买 CRR 低于100％的 DToken 都将导致其价格上涨，虽然储备余额和供应量都在增加，但供应量被乘上了一个因子。
+这一价格计算方式确保了在准备金（ONT 或 ONG）的当前余额和 DToken 的市值之间能够保持恒定的比率，即当前 DToken 的总供应量乘以 当前 DToken 的价格。当购买 DToken（以 ONT 或 ONG）时，购买的付款将被添加到准备金余额中，并据此计算新的价格。同时，新的 DToken 将发放到买方账户。基于该价格公式，购买 CRR 低于100％的 DToken 都将导致其价格上涨，虽然储备余额和供应量都在增加，但供应量被乘上了一个因子。
 
 ## 6. 原子交换
 
