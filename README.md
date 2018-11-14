@@ -241,7 +241,7 @@ In Distributed Data eXchange Framework(short for DDXF), atomic swap is used to e
 
 In freezing period, data requester can applies for arbitration to handle conflict, and the interceder is select at the beginning of data exchange.
 
-![atomicSwaps](img/atomicSwaps.png)
+<div align=center><img height="200" src="img/atomicSwaps.png"/></div>
 
 ### 6.2. The Process of Atomic Swap
 

@@ -235,7 +235,7 @@ DToken 利用了一种基于恒定准备金率（简记为CRR）的价格发现�
 
 在冻结期，数据请求方可以申请仲裁解决数据交易中发生的冲突，而仲裁者由双方在数据交易前选取。
 
-![atomicSwaps](img/atomicSwaps.png)
+<div align=center><img height="200" src="img/atomicSwaps.png"/></div>
 
 ### 6.2. 原子交换流程
 
