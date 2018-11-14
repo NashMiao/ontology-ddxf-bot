@@ -190,8 +190,9 @@ Daemon is ready
 
 ### 4.1. Introduction
 
-
+<div align=center>
 <a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a>
+</div>
 
 ## 5. Atomic Swaps
 
