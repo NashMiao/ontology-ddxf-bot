@@ -12,6 +12,7 @@ English | [中文](README_CN.md)
     - [3.3. Initialize your IPFS Repository](#33-initialize-your-ipfs-repository)
     - [3.4. Create your Private IPFS Network (optional)](#34-create-your-private-ipfs-network-optional)
     - [3.5. Run your IPFS Node](#35-run-your-ipfs-node)
+    - [3.6. Client Library for IPFS API](#36-client-library-for-ipfs-api)
 - [4. Bancor Protocol](#4-bancor-protocol)
     - [4.1. Introduction](#41-introduction)
     - [4.2. A New Method for Price Discovery](#42-a-new-method-for-price-discovery)
@@ -57,9 +58,11 @@ In many cases, using this API this is preferable to embedding IPFS directly in y
 
 This API is intended to be the same across different IPFS implementations. However, not all implementations are equally up-to-date. The most feature-complete (and the current reference for this specification) is go-ipfs.
 
+<div align=center><img height="400" src="img/ipfsHttp.png"/></div>
+
 ### 3.3. Initialize your IPFS Repository
 
-`IPFS` stores all its settings and internal data in a directory called the repository. Before using IPFS for the first time, you’ll need to initialize the repository with the ipfs init command:
+IPFS stores all its settings and internal data in a directory called the repository. Before using IPFS for the first time, you’ll need to initialize the repository with the ipfs init command:
 
 ```shell
 PS C:\Users> ipfs init
@@ -154,7 +157,7 @@ added /ip4/192.168.181.141/tcp/4001/ipfs/QmYzdL2Pe3JvoqMZ1qvcVMnAWo4fVqyvw2S8XDn
 
 ### 3.5. Run your IPFS Node
 
-Before we run our dApp, we need to run our IPFS node as a daemon.
+Before we use IPFS HTTP API, we need to run our IPFS node as a daemon.
 
 ```shell
 PS C:\Users> ipfs daemon
@@ -190,6 +193,12 @@ API server listening on /ip4/127.0.0.1/tcp/5001
 Gateway (readonly) server listening on /ip4/127.0.0.1/tcp/8080
 Daemon is ready
 ```
+
+### 3.6. Client Library for IPFS API
+
+- [Go](https://github.com/ipfs/go-ipfs-api)
+- [Python](https://github.com/ipfs/py-ipfs-api)
+- [JavaScript](https://github.com/ipfs/js-ipfs)
 
 ## 4. Bancor Protocol
 
