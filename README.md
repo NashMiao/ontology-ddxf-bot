@@ -17,9 +17,9 @@ English | [中文](README_CN.md)
 - [5. Bancor Protocol](#5-bancor-protocol)
     - [5.1. Introduction](#51-introduction)
     - [5.2. A New Method for Price Discovery](#52-a-new-method-for-price-discovery)
-- [6. Atomic Swaps](#6-atomic-swaps)
+- [6. Atomic Swap](#6-atomic-swap)
     - [6.1. Introduction](#61-introduction)
-    - [6.2. Atomic Swaps between Encrypted IPFS Address and DToken](#62-atomic-swaps-between-encrypted-ipfs-address-and-dtoken)
+    - [6.2. The Process of Atomic Swap](#62-the-process-of-atomic-swap)
 
 <!-- /TOC -->
 
@@ -227,7 +227,7 @@ A DToken utilizes a novel method for price-discovery which is based on a “Cons
 
 This calculation ensures that a constant ratio is kept between the ONT  or ONG balance and the DToken’s market cap, which is its supply times its price. When DToken are purchased (in any of their reserve currencies) the payment for the purchase is added to the reserve balance, and based on the calculated price, new DTokens are issued to the buyer. Due to the calculation above, a purchase of a DToken with a less than 100% CRR will cause its price to increase, since both the reserve balance and the supply are increasing, while the latter is multiplied by a fraction.
 
-## 6. Atomic Swaps
+## 6. Atomic Swap
 
 ### 6.1. Introduction
 
@@ -237,6 +237,10 @@ Atomic swaps can take place directly between blockchains of different cryptocurr
 
 Since then, other startups and decentralized exchanges have allowed users the same facility. For example, Lightning Labs, a startup that uses bitcoin’s lightning network for transactions, has conducted off-chain swaps using the technology.
 
-### 6.2. Atomic Swaps between Encrypted IPFS Address and DToken
+In Distributed Data eXchange Framework(short for DDXF), atomic swap is used to ensuer the data provide can withdrawal DToken from swap contract if and only if data requester get the encrypted IPFS address.
 
-Atomic swaps is an data trading module for Ontology DDXF, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
+In freezing period, data requester can applies for arbitration to handle conflict, and the interceder is select at the beginning of data exchange.
+
+### 6.2. The Process of Atomic Swap
+
+DDXF Atomic swaps is an data trading module, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
