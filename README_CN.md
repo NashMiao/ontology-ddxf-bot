@@ -37,7 +37,7 @@
 - 随机采样：随机采样256比特数据，得到高级加密标准（AES）密钥 `key`。
 - 加密：将 AES256 密钥使用公钥加密算法（PKE）进行加密得到 `ekey`，明文数据 `m` 使用 AES256-GCM 加密得到密文数据 `c`。
 
-<div align=center><img height="600" src="img/endToEnd.png"/></div>
+<div align=center><img width="500" src="img/endToEnd.png"/></div>
 
 ### 1.2. 解密流程
 

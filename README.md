@@ -37,7 +37,7 @@ There are three main steps to encrypting data:
 - Random sampling: Randomly sample 256-bit data to obtain the Advanced Encryption Standard (AES) key `key`.
 - Encryption: The AES256 key is encrypted using the Public Key Encryption Algorithm (PKE) to get `ekey`, and the plaintext data `m` is encrypted using AES256-GCM to get the ciphertext data `c`.
 
-<div align=center><img height="600" src="img/endToEnd.png"/></div>
+<div align=center><img width="500" src="img/endToEnd.png"/></div>
 
 ### Decryption Process
 
