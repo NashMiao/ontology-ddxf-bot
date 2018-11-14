@@ -29,6 +29,8 @@ Elliptic Curve Integrated Encryption Scheme(also ECIES), is a hybrid encryption 
 
 Ontology DID (also called ONT ID) is a decentralized identity identification protocol based on W3C DID specifications. ONT ID establishes a cryptographically-based digital identity for each entity, allowing self-sovereign of data authorization and ownership confirmation, which makes the identity and data truly assets that the user can control.
 
+<div align=center><img height="400" src="img/ontid.jpg"/></div>
+
 If you are interested in ONTID, you can find a detailed introduction [here](https://ontio.github.io/documentation/ontology_DID_en.html).
 
 ## 3. InterPlanetary File System (IPFS)
