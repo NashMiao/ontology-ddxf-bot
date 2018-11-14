@@ -17,7 +17,7 @@ English | [中文](README_CN.md)
     - [4.2. A New Method for Price Discovery](#42-a-new-method-for-price-discovery)
 - [5. Atomic Swaps](#5-atomic-swaps)
     - [5.1. Introduction](#51-introduction)
-    - [5.2. Encrypted IPFS Address <> DToken](#52-encrypted-ipfs-address--dtoken)
+    - [5.2. Atomic Swaps between Encrypted IPFS Address and DToken](#52-atomic-swaps-between-encrypted-ipfs-address-and-dtoken)
 
 <!-- /TOC -->
 
@@ -218,5 +218,5 @@ Atomic swaps can take place directly between blockchains of different cryptocurr
 
 Since then, other startups and decentralized exchanges have allowed users the same facility. For example, Lightning Labs, a startup that uses bitcoin’s lightning network for transactions, has conducted off-chain swaps using the technology.
 
-### 5.2. Encrypted IPFS Address <> DToken
+### 5.2. Atomic Swaps between Encrypted IPFS Address and DToken
 
