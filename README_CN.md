@@ -219,7 +219,7 @@ DToken 利用了一种基础恒定准备金率（简记为CRR）的价格发现�
 
 <div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a></div>
 
-这一价格计算方式确保了在 ONT 或 ONG 的当前余额和 DToken 的市值之间能够保持恒定的比率，即当前供应量乘以价格。当购买DToken（以任何其储备货币）时，购买的付款将被添加到储备金余额中，并根据计算新的价格，新的 DToken 将发放买方。基于该价格公式，购买 CRR 低于100％的 DToken 都将导致其价格上涨，虽然储备余额和供应量都在增加，但供应量被乘上了一个因子。
+这一价格计算方式确保了在 ONT 或 ONG 的当前余额和 DToken 的市值之间能够保持恒定的比率，即当前供应量乘以价格。当购买DToken（以任何其储备货币）时，购买的付款将被添加到储备金余额中，并根据计算新的价格，新的 DToken 将发放到买方账户。基于该价格公式，购买 CRR 低于100％的 DToken 都将导致其价格上涨，虽然储备余额和供应量都在增加，但供应量被乘上了一个因子。
 
 ## 6. 原子交换
 
