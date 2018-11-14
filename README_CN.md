@@ -215,7 +215,7 @@ Bancor 协议的命名是为了超主权货币的凯恩斯计划致敬，该计�
 
 ### 5.2. 一种价格发现的新方法
 
-DToken 利用了一种基础恒定准备金率（简记为CRR）的价格发现机制。CRR由 DToken 的发行方基于 ONT 或 ONG 设定。DToken 价格通过CRR、DToken的当前供应量以及 ONT 或 ONG 的当前余额计算得出。公式如下：
+DToken 利用了一种基于恒定准备金率（简记为CRR）的价格发现机制。CRR由 DToken 的发行方基于 ONT 或 ONG 设定。DToken 价格通过CRR、DToken的当前供应量以及 ONT 或 ONG 的当前余额计算得出。公式如下：
 
 <div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Price&space;=&space;\frac{Balance}{Supply&space;\times&space;CRR}" title="Price = \frac{Balance}{Supply \times CRR}" /></a></div>
 
