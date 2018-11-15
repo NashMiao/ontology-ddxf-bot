@@ -1,4 +1,4 @@
-# ontology-ddxf-bot
+# Ontology Distributed Data eXchange Framework Robot
 
 English | [中文](README_CN.md)
 
@@ -289,13 +289,3 @@ In freezing period, data requester can applies for arbitration to handle conflic
 ### 7.2. The Process of Atomic Swap
 
 DDXF Atomic swaps is an data trading module, it ensured the swarp of encrypted IPFS address and DToken's atomicity.
-
-data requester:
-
-- generate rand number `a`
-
-<div align=center>a &larr; RNG(seed)</div>
-
-- hc &larr; sha256(a)
-  
-- data provider
