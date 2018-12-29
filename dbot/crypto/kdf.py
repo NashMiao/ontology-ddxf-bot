@@ -24,6 +24,6 @@ def pbkdf2(seed: str or bytes, dk_len: int) -> bytes:
     index = 1
     bytes_seed = str_to_bytes(seed)
     while len(key) < dk_len:
-        key += sha256(b''.join([bytes_seed, int_to_little_bytes(index)]))
+        key += sha256(b''.join([bytes_seed, index.to_bytes(4, 'big', signed=True)]))
         index += 1
     return key[:dk_len]
