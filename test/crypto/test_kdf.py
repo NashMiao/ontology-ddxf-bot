@@ -23,7 +23,7 @@ class KdfTest(unittest.TestCase):
         key_derivation = pbkdf2(seed, dk_len)
         self.assertEqual(dk_len, len(key_derivation))
 
-    def test_aa(self):
+    def test_bytes_kdf(self):
         dk_len = 64
         seed = b'\x01'
         key_derivation = pbkdf2(seed, dk_len)
